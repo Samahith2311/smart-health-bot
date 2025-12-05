@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Smart Health Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="chat-wrapper">
+    <div class="chat-header">
+        <div class="chat-header-left">
+            <div class="bot-avatar">🤖</div>
+            <div>
+                <div class="chat-title">Smart Health Bot</div>
+                <div class="chat-subtitle">Welcome, {{ username }} 👋</div>
+            </div>
+        </div>
+        <div class="mode-pill">
+            <a href="{{ url_for('logout') }}" style="text-decoration:none; color:#333;">Logout</a>
+        </div>
+    </div>
+
+    <div id="chatbox" class="chat-body"></div>
+
+    <div class="chat-footer">
+        <div class="input-row">
+            <input type="text" id="userInput" placeholder="Ask about water, stress, exercise..." />
+            <button class="btn-voice" id="voiceBtn" title="Voice input">🎤</button>
+            <button class="btn-send" id="sendBtn">Send ➤</button>
+        </div>
+        <div class="helper-row">
+            <span id="quickWater">Set water reminder</span>
+            <span id="quickStress">I'm stressed</span>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

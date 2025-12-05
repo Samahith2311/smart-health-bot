@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Register • Smart Health Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="chat-wrapper">
+    <div class="chat-header">
+        <div class="chat-header-left">
+            <div class="bot-avatar">🤖</div>
+            <div>
+                <div class="chat-title">Smart Health Bot</div>
+                <div class="chat-subtitle">Create your account</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-body">
+        {% if error %}
+            <div class="message bot">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+            <input type="text" name="username" placeholder="Username" required />
+            <input type="email" name="email" placeholder="Email (optional)" />
+            <input type="password" name="password" placeholder="Password" required />
+            <input type="password" name="confirm" placeholder="Confirm Password" required />
+            <button class="btn-send" type="submit">Sign Up</button>
+        </form>
+
+        <div style="margin-top:15px; font-size:12px;">
+            Already have an account? <a href="{{ url_for('login') }}">Login</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard • Smart Health Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="chat-wrapper">
+    <div class="chat-header">
+        <div class="chat-header-left">
+            <div class="bot-avatar">📊</div>
+            <div>
+                <div class="chat-title">Your Health Dashboard</div>
+                <div class="chat-subtitle">Hello, {{ username }} 👋</div>
+            </div>
+        </div>
+        <div class="mode-pill">
+            <a href="{{ url_for('home') }}" style="text-decoration:none; color:#333; margin-right:8px;">Chat</a>
+            <a href="{{ url_for('logout') }}" style="text-decoration:none; color:#333;">Logout</a>
+        </div>
+    </div>
+
+    <div class="chat-body" style="font-size:13px;">
+        <div style="margin-bottom:10px;">
+            <strong>Reminder summary:</strong><br>
+            Water: {{ stats.water }} • Meal: {{ stats.meal }} • Sleep: {{ stats.sleep }} • Custom: {{ stats.custom }}
+        </div>
+
+        {% if reminders %}
+            <div><strong>Your reminders:</strong></div>
+            <ul style="padding-left:18px; margin-top:6px;">
+                {% for r in reminders %}
+                    <li>
+                        <strong>[{{ r[1]|capitalize }}]</strong>
+                        {{ r[2] }} — every {{ r[3] }} min
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div>You don’t have any reminders yet. Try setting one in the chat. 😊</div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
